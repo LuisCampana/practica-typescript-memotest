@@ -32,23 +32,22 @@ function App() {
       }, 1000);
     }
   }, [time]);
-  if (time === 0) {
-    return (
-      <button className="text-[40px]" onClick={() => setTime(1)}>
-        Play
-      </button>
-    );
-  }
-
   return (
     <>
       <h1
-        className="pb-[40px] text-[#F70A0A] text-[25px] cursor-pointer"
+        className="pb-[40px] text-[#fc0303] text-[25px] cursor-pointer"
         onClick={() => location.reload()}
       >
         Memotest Star Wars
       </h1>
-      <h3 className="pb-[30px] text-[#F70A0A]">Tiempo Transcurrido: {time}</h3>
+      <h3
+        className="pb-[30px] text-[#fc0303] cursor-pointer"
+        onClick={() => setTime(1)}
+      >
+        {time === 0
+          ? "Toque para empezar con un temporizador"
+          : `Tiempo trasncurrido: ${time}`}
+      </h3>
       <ul className="App grid lg:grid-cols-5 gap-[25px] grid-cols-2 md:grid-cols-4">
         {Imagenes.map((img) => {
           const [, url] = img.split("|");
@@ -64,7 +63,7 @@ function App() {
               {selected.includes(img) || guessed.includes(img) ? (
                 <img src={url} alt="img" width="90px" height="90px" />
               ) : (
-                <img src="https://icongr.am/clarity/eye.svg?size=122&color=currentColor" />
+                <img src="https://icongr.am/entypo/star.svg?size=128&color=fc0303" />
               )}
             </li>
           );

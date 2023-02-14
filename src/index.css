@@ -22,6 +22,7 @@ body {
   place-items: center;
   max-width: 800px;
   min-height: 100vh;
+  background-color: #242424;
 }
 img {
   height: 90px;
