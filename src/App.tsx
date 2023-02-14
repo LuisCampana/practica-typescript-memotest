@@ -44,7 +44,7 @@ function App() {
     <>
       <h1 className="pb-[40px] text-[red] text-[25px]">Memotest Star Wars</h1>
       {time}
-      <ul className="App grid lg:grid-cols-5 gap-[25px] grid-cols-2 md:grid-cols-3">
+      <ul className="App grid lg:grid-cols-5 gap-[25px] grid-cols-2 md:grid-cols-4">
         {Imagenes.map((img) => {
           const [, url] = img.split("|");
           return (
