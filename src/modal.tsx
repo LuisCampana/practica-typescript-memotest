@@ -2,7 +2,7 @@ import { Fragment, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function Example() {
+export default function Modal() {
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
   function reload() {

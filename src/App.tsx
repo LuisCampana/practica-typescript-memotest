@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Example from "./modal";
+import Modal from "./modal";
 import { Imagenes } from "./Services/Imagenes";
 
 function App() {
@@ -15,34 +15,37 @@ function App() {
     }
   }, [selected]);
   return (
-    <ul className="App grid md:grid-cols-5 gap-[25px] grid-cols-2">
-      {Imagenes.map((img) => {
-        const [, url] = img.split("|");
-        return (
-          <li
-            onClick={() =>
-              selected.length < 2 &&
-              setSelected((selected) => selected.concat(img))
-            }
-            key={img}
-            className="list-none	p-4 border-solid border-[1px] rounded-[10px] border-[#666] cursor-pointer"
-          >
-            {selected.includes(img) || guessed.includes(img) ? (
-              <img src={url} alt="img" width="90px" height="90px" />
-            ) : (
-              <img src="https://icongr.am/clarity/eye.svg?size=122&color=currentColor" />
-            )}
-          </li>
-        );
-      })}
-      {guessed.length === Imagenes.length ? (
-        <div>
-          <Example />
-        </div>
-      ) : (
-        ""
-      )}
-    </ul>
+    <>
+      <h1 className="pb-[40px] text-[red] text-[25px]">Memotest Star Wars</h1>
+      <ul className="App grid md:grid-cols-5 gap-[25px] grid-cols-2">
+        {Imagenes.map((img) => {
+          const [, url] = img.split("|");
+          return (
+            <li
+              onClick={() =>
+                selected.length < 2 &&
+                setSelected((selected) => selected.concat(img))
+              }
+              key={img}
+              className="list-none	p-4 border-solid border-[1px] rounded-[10px] border-[#666] cursor-pointer"
+            >
+              {selected.includes(img) || guessed.includes(img) ? (
+                <img src={url} alt="img" width="90px" height="90px" />
+              ) : (
+                <img src="https://icongr.am/clarity/eye.svg?size=122&color=currentColor" />
+              )}
+            </li>
+          );
+        })}
+        {guessed.length === Imagenes.length ? (
+          <div>
+            <Modal />
+          </div>
+        ) : (
+          ""
+        )}
+      </ul>
+    </>
   );
 }
 
