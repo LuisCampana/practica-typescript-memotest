@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Example from "./modal";
 import { Imagenes } from "./Services/Imagenes";
 
 function App() {
@@ -13,12 +14,6 @@ function App() {
       setTimeout(() => setSelected([]), 1000);
     }
   }, [selected]);
-  useEffect(() => {
-    if (guessed.length === Imagenes.length) {
-      alert("You win");
-      location.reload();
-    }
-  }, [guessed]);
   return (
     <ul className="App grid md:grid-cols-5 gap-[25px] grid-cols-2">
       {Imagenes.map((img) => {
@@ -40,6 +35,13 @@ function App() {
           </li>
         );
       })}
+      {guessed.length === Imagenes.length ? (
+        <div>
+          <Example />
+        </div>
+      ) : (
+        ""
+      )}
     </ul>
   );
 }
