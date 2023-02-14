@@ -1,8 +1,10 @@
-import { Fragment, useRef, useState } from "react";
+import { Children, Fragment, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { Dialog, Transition } from "@headlessui/react";
-
-export default function Modal() {
+type Props = {
+  savetime: number;
+};
+export default function Modal(props: Props) {
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
   function reload() {
@@ -47,7 +49,10 @@ export default function Modal() {
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <div className="mt-2 justify-center ">
                         <h1 className=" text-gray-500 text-[30px]  ">
-                          You Win!!!!!
+                          Ganaste!!!!!!
+                          <>
+                            <p>Lo lograste en: {props.savetime} segundos!</p>
+                          </>
                         </h1>
                       </div>
                     </div>

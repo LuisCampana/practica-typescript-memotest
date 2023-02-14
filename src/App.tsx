@@ -6,6 +6,9 @@ import { Imagenes } from "./Services/Imagenes";
 function App() {
   const [guessed, setGuessed] = useState<string[]>([]);
   const [selected, setSelected] = useState<string[]>([]);
+  const [time, setTime] = useState(0);
+  const [savetime, setSavetime] = useState(0);
+
   useEffect(() => {
     if (selected.length === 2) {
       if (selected[0].split("|")[1] === selected[1].split("|")[1]) {
@@ -14,9 +17,33 @@ function App() {
       setTimeout(() => setSelected([]), 1000);
     }
   }, [selected]);
+
+  useEffect(() => {
+    if (time !== 0) {
+      if (time !== 0 && time !== -1) {
+        setSavetime(time);
+      }
+      const timeout = setTimeout(() => {
+        setTime(time + 1);
+        if (guessed.length === Imagenes.length) {
+          setTime(-1);
+          return () => clearTimeout(timeout);
+        }
+      }, 1000);
+    }
+  }, [time]);
+  if (time === 0) {
+    return (
+      <button className="text-[40px]" onClick={() => setTime(1)}>
+        Play
+      </button>
+    );
+  }
+
   return (
     <>
       <h1 className="pb-[40px] text-[red] text-[25px]">Memotest Star Wars</h1>
+      {time}
       <ul className="App grid md:grid-cols-5 gap-[25px] grid-cols-2">
         {Imagenes.map((img) => {
           const [, url] = img.split("|");
@@ -39,7 +66,7 @@ function App() {
         })}
         {guessed.length === Imagenes.length ? (
           <div>
-            <Modal />
+            <Modal savetime={savetime} />
           </div>
         ) : (
           ""
