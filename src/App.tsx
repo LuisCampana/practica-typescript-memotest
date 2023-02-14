@@ -42,8 +42,13 @@ function App() {
 
   return (
     <>
-      <h1 className="pb-[40px] text-[red] text-[25px]">Memotest Star Wars</h1>
-      {time}
+      <h1
+        className="pb-[40px] text-[#F70A0A] text-[25px] cursor-pointer"
+        onClick={() => location.reload()}
+      >
+        Memotest Star Wars
+      </h1>
+      <h3 className="pb-[30px] text-[#F70A0A]">Tiempo Transcurrido: {time}</h3>
       <ul className="App grid lg:grid-cols-5 gap-[25px] grid-cols-2 md:grid-cols-4">
         {Imagenes.map((img) => {
           const [, url] = img.split("|");
