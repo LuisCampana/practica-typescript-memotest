@@ -34,11 +34,6 @@ function App() {
   }, [time]);
   return (
     <>
-      <audio
-        src="./src/song/ChuVhTcXA2c_48.mp3"
-        loop="loop"
-        autoplay="autoplay"
-      />
       <h1
         className="pb-[40px] text-[#fc0303] text-[25px] cursor-pointer"
         onClick={() => location.reload()}
