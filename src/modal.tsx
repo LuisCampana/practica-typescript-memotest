@@ -51,7 +51,11 @@ export default function Modal(props: Props) {
                         <h1 className=" text-gray-500 text-[30px]  ">
                           Ganaste!!!!!!
                           <>
-                            <p>Lo lograste en: {props.savetime} segundos!</p>
+                            {props.savetime > 0 ? (
+                              <p>Lo lograste en: {props.savetime} segundos!</p>
+                            ) : (
+                              ""
+                            )}
                           </>
                         </h1>
                       </div>

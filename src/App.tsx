@@ -58,7 +58,7 @@ function App() {
                 setSelected((selected) => selected.concat(img))
               }
               key={img}
-              className="list-none	p-4 border-solid border-[1px] rounded-[10px] border-[#666] cursor-pointer"
+              className="list-none	p-4 border-solid border-[1px] rounded-[10px] border-[#666] cursor-pointer flex justify-center"
             >
               {selected.includes(img) || guessed.includes(img) ? (
                 <img src={url} alt="img" width="90px" height="90px" />
